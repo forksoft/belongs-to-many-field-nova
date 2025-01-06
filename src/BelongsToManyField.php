@@ -84,20 +84,20 @@ class BelongsToManyField extends Field
         $this->localize();
     }
 
-    public function optionsLabel(string $optionsLabel)
+    public function optionsLabel(string $optionsLabel): BelongsToManyField
     {
         $this->label = $optionsLabel;
 
         return $this->withMeta(['optionsLabel' => $this->label]);
     }
 
-    public function trackBy(string $trackBy)
+    public function trackBy(string $trackBy): BelongsToManyField
     {
         $this->trackBy = $trackBy;
         return $this->withMeta(['trackBy' => $this->trackBy]);
     }
 
-    public function options($options = [])
+    public function options($options = []): static
     {
         $this->optionsCallback = $options;
 
@@ -166,7 +166,7 @@ class BelongsToManyField extends Field
         return $this;
     }
 
-    public function resolve($resource, $attribute = null)
+    public function resolve($resource, $attribute = null): void
     {
         if ($this->isAction) {
             parent::resolve($resource, $attribute);
